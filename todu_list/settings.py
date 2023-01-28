@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'todu_list_app'
+    'todu_list_app',
+    "rest_framework"
 ]
 
 MIDDLEWARE = [
