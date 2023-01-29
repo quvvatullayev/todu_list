@@ -67,3 +67,9 @@ class UpdeteTodo(APIView):
         todo.save()
         todo_serializer = ToduSerializer(todo, many = False)
         return Response(todo_serializer.data)
+
+class DeleteTodo(APIView):
+    def get(self, requset:Request, pk):
+        todo = Todu.objects.get(id = pk)
+        todo.delete()
+        return Response({"Delete todo list":"Ok"})
