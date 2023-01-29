@@ -40,3 +40,12 @@ class DeleteUser(APIView):
         user_filter = User.objects.get(id = pk)
         user_filter.delete()
         return Response({'Delete user': 'Ok'})
+
+class CreteTodu(APIView):
+    def post(self, request:Request):
+        data = request.data
+        todu = ToduSerializer(data=data, many = False)
+        if todu.is_valid():
+            todu.save()
+            return Response(todu.data)
+        return Response(todu.errors)
