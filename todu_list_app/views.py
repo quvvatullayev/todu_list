@@ -49,3 +49,9 @@ class CreteTodu(APIView):
             todu.save()
             return Response(todu.data)
         return Response(todu.errors)
+
+class RedeTodo(APIView):
+    def get(self, request:Request, user_id):
+        todo_filter = Todu.objects.filter(user = user_id)
+        todo = ToduSerializer(todo_filter, many = True)
+        return Response(todo.data)
