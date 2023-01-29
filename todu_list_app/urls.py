@@ -5,6 +5,7 @@ from .views import (
     DeleteUser,
     CreteTodu,
     RedeTodo,
+    UpdeteTodo,
 )
 
 urlpatterns = [
@@ -13,5 +14,6 @@ urlpatterns = [
     path('user_update/<int:pk>/', UserUpdate.as_view()),
     path('delete_user/<int:pk>/', DeleteUser.as_view()),
     path('add_todo/', CreteTodu.as_view()),
-    path('raede_todo/<int:user_id>/', RedeTodo.as_view())
+    path('raede_todo/<int:user_id>/', RedeTodo.as_view()),
+    path('updete_todo/<int:pk>/', UpdeteTodo.as_view()),
 ]

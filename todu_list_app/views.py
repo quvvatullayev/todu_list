@@ -55,3 +55,15 @@ class RedeTodo(APIView):
         todo_filter = Todu.objects.filter(user = user_id)
         todo = ToduSerializer(todo_filter, many = True)
         return Response(todo.data)
+
+class UpdeteTodo(APIView):
+    def post(self, requset:Request, pk):
+        todo = Todu.objects.get(id = pk)
+        data = requset.data
+        todo.title = data.get('title', todo.title)
+        todo.discreption = data.get('discreption', todo.discreption)
+        todo.dedline = data.get('dedline', todo.dedline)
+        todo.check = data.get('check', todo.check)
+        todo.save()
+        todo_serializer = ToduSerializer(todo, many = False)
+        return Response(todo_serializer.data)
