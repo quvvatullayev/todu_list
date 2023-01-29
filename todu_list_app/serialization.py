@@ -6,7 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
-class UserSerializer(serializers.ModelSerializer):
+class ToduSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todu
         fields = '__all__'

@@ -15,3 +15,6 @@ class Todu(models.Model):
     discreption = models.CharField(max_length=50)
     dedline = models.DateTimeField(auto_now=False)
     chekt = models.BooleanField(blank=False)
+
+    def __str__(self) -> str:
+        return self.title
