@@ -34,3 +34,9 @@ class UserUpdate(APIView):
         user_filter.save()
         user = UserSerializer(user_filter, many = False)
         return Response(user.data)
+
+class DeleteUser(APIView):
+    def get(self, request:Request, pk):
+        user_filter = User.objects.get(id = pk)
+        user_filter.delete()
+        return Response({'Delete user': 'Ok'})
