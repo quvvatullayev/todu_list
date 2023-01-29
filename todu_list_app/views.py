@@ -23,3 +23,14 @@ class UserView(APIView):
         user_filter = User.objects.get(id = pk)
         user = UserSerializer(user_filter, many = False)
         return Response(user.data)
+
+class UserUpdate(APIView):
+    def post(self,request:Request, pk):
+        user_filter = User.objects.get(id = pk)
+        data = request.data
+        user_filter.username = data.get("username", user_filter.username)
+        user_filter.email = data.get("email", user_filter.email)
+        user_filter.password = data.get("password", user_filter.password)
+        user_filter.save()
+        user = UserSerializer(user_filter, many = False)
+        return Response(user.data)
